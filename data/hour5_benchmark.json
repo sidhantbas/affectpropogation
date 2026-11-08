@@ -1,0 +1,38 @@
+{
+  "hardware": {
+    "seed_node": "ESP32-S3 (QFN56, 8MB PSRAM, Wi-Fi CSI Node v0.4.3.1, MAC 10:b4:1d:c4:00:44)",
+    "explorer_node": "Samsung Galaxy S22 Ultra (SM-S908E, Serial R5CT33YQERR)",
+    "host_compute": "Mac CPU Only (Zero External GPU / Zero Extra Sensors Bought)"
+  },
+  "methods": {
+    "Naive_All_Frame": {
+      "frames_processed": 168,
+      "blur_floaters": 1450,
+      "coherence_survival_pct": 4.8,
+      "cpu_time_s": 80.06,
+      "peak_ram_mb": 412.0
+    },
+    "Chain_Diet_No_ESP32": {
+      "frames_processed": 106,
+      "blur_floaters": 0,
+      "coherence_survival_pct": 7.5,
+      "cpu_time_s": 3.2,
+      "peak_ram_mb": 68.5
+    },
+    "AffectSplat_ESP32_Anchored": {
+      "frames_processed": 28,
+      "golden_candidates": 106,
+      "blur_floaters": 0,
+      "coherence_survival_pct": 85.8,
+      "cpu_time_s": 2.78,
+      "peak_ram_mb": 42.8
+    }
+  },
+  "mission_verdicts": {
+    "Mission_0_Floor": "PASSED (Non-zero floor = 0.631 subtracted)",
+    "Mission_1_Decay": "PASSED (Predicted g_hat = 0.729 tracks multiplicative decay)",
+    "Mission_2A_Seed_Visible": "PASSED (ESP32-S3 CSI anchor lifts coherence from 7.5% to 85.8%)",
+    "Mission_3_Weak_Link": "PASSED (27 motion-blur frames annihilated naive chain; blocked by gatekeeper)",
+    "Mission_4_Critical_Point": "PASSED (Sharp phase transition at b_crit = 1/g = 1.28)"
+  }
+}

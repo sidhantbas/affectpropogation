@@ -1,0 +1,14 @@
+{
+  "n_splats_generated": 10752,
+  "n_keyframes_sampled": 28,
+  "naive_floaters_eliminated": 1450,
+  "cpu_build_time_seconds": 0.116,
+  "ply_file": "/Users/sid/affectpropogation/data/room_world.ply",
+  "json_splat_file": "/Users/sid/affectpropogation/data/room_splats.json",
+  "esp32_seed_xyz": [
+    -0.28,
+    -0.26,
+    0.82
+  ],
+  "figure": "/Users/sid/affectpropogation/figures/hour3_lite_splat.png"
+}

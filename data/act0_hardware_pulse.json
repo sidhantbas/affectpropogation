@@ -1,0 +1,91 @@
+{
+  "usb": {
+    "esp32_s3_connected": true,
+    "esp32_port": "/dev/cu.usbmodem5AE70749591",
+    "esp32_mac": "10:b4:1d:c4:00:44",
+    "samsung_connected": true,
+    "samsung_serial": "R5CT33YQERR"
+  },
+  "csi_samples": [
+    {
+      "wall_t": 0.501,
+      "esp_ms": 790984,
+      "cb_id": 112300,
+      "len": 128,
+      "rssi": -67,
+      "channel": 1
+    },
+    {
+      "wall_t": 1.07,
+      "esp_ms": 791564,
+      "cb_id": 112400,
+      "len": 128,
+      "rssi": -81,
+      "channel": 1
+    },
+    {
+      "wall_t": 1.644,
+      "esp_ms": 792134,
+      "cb_id": 112500,
+      "len": 128,
+      "rssi": -80,
+      "channel": 1
+    },
+    {
+      "wall_t": 2.213,
+      "esp_ms": 792694,
+      "cb_id": 112600,
+      "len": 128,
+      "rssi": -81,
+      "channel": 1
+    },
+    {
+      "wall_t": 2.773,
+      "esp_ms": 793264,
+      "cb_id": 112700,
+      "len": 128,
+      "rssi": -71,
+      "channel": 1
+    },
+    {
+      "wall_t": 3.363,
+      "esp_ms": 793854,
+      "cb_id": 112800,
+      "len": 128,
+      "rssi": -66,
+      "channel": 1
+    },
+    {
+      "wall_t": 3.908,
+      "esp_ms": 794394,
+      "cb_id": 112900,
+      "len": 128,
+      "rssi": -71,
+      "channel": 1
+    },
+    {
+      "wall_t": 4.449,
+      "esp_ms": 794944,
+      "cb_id": 113000,
+      "len": 128,
+      "rssi": -81,
+      "channel": 1
+    },
+    {
+      "wall_t": 5.012,
+      "esp_ms": 795494,
+      "cb_id": 113100,
+      "len": 128,
+      "rssi": -67,
+      "channel": 1
+    },
+    {
+      "wall_t": 5.61,
+      "esp_ms": 796104,
+      "cb_id": 113200,
+      "len": 128,
+      "rssi": -66,
+      "channel": 1
+    }
+  ]
+}

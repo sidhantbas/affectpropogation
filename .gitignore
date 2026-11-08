@@ -1,0 +1,11 @@
+.env
+.secrets/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+data/*.mp4
+data/raw_frames/
+data/keyframes/
+data/room_splats.json
+data/room_world.ply
