@@ -1,0 +1,38 @@
+{
+  "wall_time_seconds": 8.6,
+  "voxlution": {
+    "level_counts": {
+      "25.0000cm": 1860,
+      "12.5000cm": 10643,
+      "6.2500cm": 41109,
+      "3.1250cm": 75554,
+      "1.5625cm": 84953
+    },
+    "mean_octant_branching_b": 1.64,
+    "dense_1_56cm_voxels": 28603415,
+    "sparse_1_56cm_voxels": 84953,
+    "memory_saving_pct": 99.7,
+    "total_octant_stream_bytes": 129166,
+    "figure": "/Users/sid/affectpropogation/figures/voxlution_cascade.png"
+  },
+  "lucidlyra": {
+    "clip_peak_scores": {
+      "ESP32-S3 Seed (x_0)": 0.9868,
+      "MacBook & Desk": 0.9731,
+      "Steel Tumbler Mug": 0.7465,
+      "Water Pitcher & Dresser": 0.969,
+      "Nepal Flags & Wall Box": 0.2626,
+      "Radiator & Room Door": 0.9858
+    },
+    "instance_splat_counts": {
+      "ESP32-S3 Seed (x_0)": 3417,
+      "MacBook & Desk": 4008,
+      "Steel Tumbler Mug": 12693,
+      "Water Pitcher & Dresser": 20544,
+      "Nepal Flags & Wall Box": 31776,
+      "Radiator & Room Door": 13856
+    },
+    "figure": "/Users/sid/affectpropogation/figures/lucidlyra_semantics.png",
+    "anatomy_figure": "/Users/sid/affectpropogation/figures/epic_object_anatomy.png"
+  }
+}

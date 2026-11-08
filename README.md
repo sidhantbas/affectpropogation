@@ -33,6 +33,53 @@ All experiments in this repository were executed on a real indoor environment us
 | **Naive All-Frame 3DGS Baseline** | `168` | `1,450` | `4.8%` (`8 / 168`) | `412.0 MB` | `80.06 s` |
 | **Chain Diet Only (No ESP32-S3)** | `106` | `0` | `7.5%` (`8 / 106`) | `68.5 MB` | `3.20 s` |
 | **AffectSplat (Ours: S22 + ESP32-S3)** | **`28` (`106` golden)** | **`0`** | **`85.8%` (`91 / 106`)** | **`42.8 MB` (`9.6× lighter`)** | **`2.78 s` (`28.8× faster`)** |
+| **AffectSplat + JEPA + VoxLution + LucidLyra (`Act II`)** | **`106` (`ViT-B/32` on MPS)** | **`0`** | **`94.0%` (`0.148m` drift)** | **`99.7%` Voxel RAM Saved** | **`129,441` HD Micro-Splats (`0.98s`)** |
+
+---
+
+## 🚀 Act II: Frontier 3D World Model — `JEPA × VoxLution × LucidLyra × ESP32-S3`
+
+**Scripts:** [`world_model/jepa_experiments.py`](world_model/jepa_experiments.py) & [`world_model/vox_lucid_jepa.py`](world_model/vox_lucid_jepa.py) • **Data:** [`data/jepa_summary.json`](data/jepa_summary.json) & [`data/vox_lucid_summary.json`](data/vox_lucid_summary.json)
+
+In Act II, we unify our **Affect Propagation ($I(n) = \prod g_k$) + ESP32-S3 CSI Seed** framework with three frontier 3D World Model paradigms on Apple Silicon (`MPS`):
+1. **JEPA (Joint-Embedding Predictive Architecture):** Divides the labor between the **Samsung S22 Ultra Camera** (local `768-dim` + `7×7` patch-token Vision Transformer latent state $z_k$) and the **Bare ESP32-S3 CSI Radar** (global radio context $a_k$), cutting 3D metric scale drift by **`77.6%`** (`0.659m → 0.148m`) and upgrading geometry **12×** from `10,752` coarse splats to **`129,441` anisotropic micro-splats** in `0.98s`.
+2. **VoxLution ([`arXiv:2610.41501`](https://daoyig.github.io/VoxLution/)):** Evolves the room across a 5-stage coarse-to-fine sparse voxel cascade (`25.0 cm → 12.5 cm → 6.25 cm → 3.125 cm → 1.5625 cm`) using training-free **1-byte Resolution-Invariant Octant Codes (`0..255`)**, saving **`99.7%` of voxel memory** (`84,953` occupied leaf voxels vs. `28,603,415` naive dense voxels; `129 KB` total octant stream).
+3. **LucidLyra ([`arXiv:2610.40495`](https://research.nvidia.com/labs/sil/projects/lucidlyra/)):** Distills `512-dim` open-vocabulary `CLIP` semantic features ($f_{\text{sem}}$) and 3D object instance IDs ($f_{\text{inst}}$) directly into every 3D Gaussian splat in a single pass—turning the room into **6 individually queryable, levitatable, and interactable 3D object twins**.
+
+### 1. Anatomy of an Interactable 3D World: Real Camera Views vs. Isolated 3D Object Twins
+<p align="center">
+  <img src="figures/epic_object_anatomy.png" alt="Anatomy of an Interactable 3D World: 6 Real Room Objects & Their 3D Twins" width="100%">
+</p>
+
+| Object ID & Semantic Twin | Samsung Frame | 1.56cm Micro-Splats | CLIP Match Score | VoxLution Octant Code | ESP32-S3 Survival $I(n)$ |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **`#1 ESP32-S3 Seed (x_0)`** | `frame_0008.jpg` | `3,417` | `98.7%` | `0x9F (159)` | **`1.000`** (`-68 dBm`) |
+| **`#2 MacBook & Desk`** | `frame_0025.jpg` | `4,008` | `97.3%` | `0xE7 (231)` | **`0.892`** (`-71 dBm`) |
+| **`#3 Steel Tumbler Mug`** | `frame_0055.jpg` | `12,693` | `74.7%` | `0x7B (123)` | **`0.641`** (`-74 dBm`) |
+| **`#4 Water Pitcher & Dresser`** | `frame_0088.jpg` | `20,544` | `96.9%` | `0xD5 (213)` | **`0.485`** (`-78 dBm`) |
+| **`#5 Nepal Flags & Wall Box`** | `frame_0125.jpg` | `31,776` | `26.3%` | `0xFE (254)` | **`0.348`** (`-82 dBm`) |
+| **`#6 Radiator & Room Door`** | `frame_0160.jpg` | `13,856` | `98.6%` | `0xBC (188)` | **`0.235`** (`-85 dBm`) |
+
+### 2. VoxLution Coarse-to-Fine Sparse Octant Evolution (`25.0 cm → 1.5625 cm`)
+<p align="center">
+  <img src="figures/voxlution_cascade.png" alt="VoxLution Coarse-to-Fine Sparse Voxel Evolution" width="100%">
+</p>
+
+### 3. LucidLyra Single-Pass RGB Appearance + 512-D CLIP Semantic Field + 3D Instance Segmentation
+<p align="center">
+  <img src="figures/lucidlyra_semantics.png" alt="LucidLyra Joint RGB, CLIP PCA, and 3D Instance Segmentation" width="100%">
+</p>
+
+### 4. JEPA Mini-Experiments A, B & C: Dividing the Importance of Samsung Camera ($z_k$) vs. ESP32-S3 Radar ($a_k$)
+<p align="center">
+  <img src="figures/jepa_expA_ablation.png" alt="JEPA Mini-Experiment A: Camera vs ESP32 Ablation" width="100%">
+</p>
+<p align="center">
+  <img src="figures/jepa_expB_hd_splats.png" alt="JEPA Mini-Experiment B: 12x Surprise-Densified 3D Gaussian Splatting" width="100%">
+</p>
+<p align="center">
+  <img src="figures/jepa_expC_blindspot.png" alt="JEPA Mini-Experiment C: 18-Step Camera Blind-Spot Prediction" width="95%">
+</p>
 
 ---
 

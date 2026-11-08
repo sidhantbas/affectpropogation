@@ -1,0 +1,88 @@
+{
+  "device_used": "mps",
+  "vision_backbone": "openai/clip-vit-base-patch32 (ViT-B/32, 768-dim CLS + 7x7 Patch Tokens)",
+  "total_wall_time_seconds": 5.63,
+  "expA_modality_ablation": {
+    "latent_floor": 0.5439,
+    "mean_g_esp32_only": 0.9287,
+    "mean_g_camera_only": 0.9342,
+    "mean_g_joint_jepa": 0.9401,
+    "final_drift_camera_only_m": 0.659,
+    "final_drift_joint_jepa_m": 0.148,
+    "drift_reduction_pct": 77.6,
+    "figure": "/Users/sid/affectpropogation/figures/jepa_expA_ablation.png"
+  },
+  "expB_hd_gaussian_splatting": {
+    "coarse_splats_hour3": 10752,
+    "hd_micro_splats_jepa": 129441,
+    "webgl_interactive_splats": 86294,
+    "resolution_multiplier": 12.0,
+    "build_time_seconds": 0.978,
+    "landmarks": [
+      {
+        "id": 0,
+        "name": "ESP32-S3 CSI Seed (x_0)",
+        "xyz": [
+          -0.28,
+          -0.26,
+          0.82
+        ],
+        "color": "#22c55e",
+        "desc": "Origin Anchor I(0)=1.0 \u2022 128-Byte Wi-Fi CSI Radar"
+      },
+      {
+        "id": 1,
+        "name": "MacBook & Steel Tumbler Desk",
+        "xyz": [
+          -0.15,
+          -0.05,
+          1.05
+        ],
+        "color": "#38bdf8",
+        "desc": "High-Surprise Micro-Splats (Keyboard & Screen)"
+      },
+      {
+        "id": 2,
+        "name": "Water Pitcher & Dresser",
+        "xyz": [
+          0.42,
+          -0.12,
+          1.45
+        ],
+        "color": "#facc15",
+        "desc": "Mid-Sweep Structural Depth Node"
+      },
+      {
+        "id": 3,
+        "name": "Crossed Nepal Flags & Aruba AP",
+        "xyz": [
+          0.75,
+          0.22,
+          1.68
+        ],
+        "color": "#f43f5e",
+        "desc": "ViT Semantic Landmark (s_blur=0.99)"
+      },
+      {
+        "id": 4,
+        "name": "White Radiator & Room Door",
+        "xyz": [
+          1.45,
+          -0.18,
+          2.05
+        ],
+        "color": "#a855f7",
+        "desc": "Terminal Node (Rescued by ESP32 Seed: I=0.235)"
+      }
+    ],
+    "figure": "/Users/sid/affectpropogation/figures/jepa_expB_hd_splats.png"
+  },
+  "expC_blindspot_rollout": {
+    "blackout_steps": 18,
+    "final_coherence_pixel": 0.0,
+    "final_coherence_cam_only": 0.8323,
+    "final_coherence_esp32_jepa": 0.9278,
+    "mean_coherence_esp32_jepa": 0.9332,
+    "figure": "/Users/sid/affectpropogation/figures/jepa_expC_blindspot.png"
+  }
+}
